@@ -1,4 +1,4 @@
-import { useState, useRef, type ReactNode } from 'react';
+import { useState, useRef, type ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFixedBody } from '../../hooks/use-fixed-body';
 import { Mask } from './Mask';
@@ -28,6 +28,20 @@ export const MaskedMenu = ({ children }: MaskedMenuProps) => {
     navigate(path);
     setIsMenuOpen(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isMenuOpen && event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
 
   return (
     <div className="relative">
