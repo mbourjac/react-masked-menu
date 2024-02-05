@@ -4,8 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --off-black: #070b11;
+  --main-padding: 32px;
+}
+
 @layer base {
   body {
-    @apply bg-black font-body;
+    @apply bg-off-black font-body;
   }
 }

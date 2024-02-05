@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         body: ['Raleway', 'sans-serif'],
       },
+      colors: {
+        'off-black': 'var(--off-black)',
+      },
     },
   },
   plugins: [],
