@@ -5,12 +5,43 @@
 @tailwind utilities;
 
 :root {
+  --primary-color: #ff3f64;
   --off-black: #070b11;
   --main-padding: 32px;
+  --mask-size: 64px;
+  --mask-div-width: calc(var(--mask-size) + var(--main-padding));
 }
 
 @layer base {
   body {
     @apply bg-off-black font-body;
+  }
+}
+
+@layer components {
+  .mask {
+    mask-image: url('./assets/mask.svg');
+    mask-repeat: no-repeat;
+    mask-size: var(--mask-size);
+  }
+
+  .nav-button {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      right: 0;
+      height: 0.3rem;
+      transform-origin: right;
+      transform: scaleX(0);
+      background-color: currentColor;
+      transition: transform 0.95s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &:hover::after {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
   }
 }

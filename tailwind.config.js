@@ -9,6 +9,7 @@ export default {
       },
       colors: {
         'off-black': 'var(--off-black)',
+        primary: 'var(--primary-color)',
       },
     },
   },
